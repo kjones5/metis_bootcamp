@@ -1,1 +1,1 @@
-# metis_bootcamp
+# Metis Bootcamp Repository - Kelly Jones
