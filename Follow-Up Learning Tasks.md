@@ -5,6 +5,12 @@
 * Setting up SSH with GitHub (day 2 lecture)
 * Download Anki and crowd version - test first flashcard Q
 * GitHub tool from Chad (4/16 Slack "Resources")
+* Clean up GitHub repo
+  * Project 1 - readme file, pic of viz, remove old repos, update Jupyter to point to correct data source, remove data in main folder
+  * Metis Bootcamp - readme file
+  * Inv 1 - readme file, gitignore, updated twbx
+  * Move pairs to SEA18
+  * Move tasks list to desktop (?), maybe docs
 
 
 
@@ -34,13 +40,11 @@
 
 #### Career
 
-* Attend Booz Allen meetup
 * Résumé / LinkedIn
   * Update my résumé on site Tiffany mentioned
+  * Add GitHub and website link
   * Sent résumé to Catherine Austin (and the other guy? Ping for coffee)
 * Blog
-  * List platforms I could use
-  * Explore and pick one
+  * Set up website (kellyjones.co)
   * Write blog post for project 1
 * Read Wait But Why article
-
