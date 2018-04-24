@@ -8,4 +8,4 @@ Suggested approach to this directory:
 2. At slide 6, open the .twbx (Tableau Packaged Workbook) file and follow directions in the captions
 3. Review slides 7-9
 
-If you do not have Tableau Desktop installed, you can view the workbook with Tableau Reader[https://www.tableau.com/products/reader] but will not be able to make changes. 
+If you do not have Tableau Desktop installed, you can view the workbook with [Tableau Reader](https://www.tableau.com/products/reader) but will not be able to make changes. 
