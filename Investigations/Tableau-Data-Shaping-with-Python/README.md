@@ -1,5 +1,5 @@
 ## Investigation 1: Tableau Data Shaping with Python
-*Presented April 17, 2018 at Metis*
+*Presented April 17, 2018 @ Metis*
 
 This investigation shares recommendations for how to build a smoother connection between Tableau and Python, particularly with regards to data shaping. Tableau prefers data that is long and skinny, whereas `pandas` dataframes in Python are often wider and shorter. Some Python functionality can also be integrated directly into Tableau via the TabPy extension.
 
