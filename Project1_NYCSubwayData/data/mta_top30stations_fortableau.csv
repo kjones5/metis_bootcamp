@@ -1,0 +1,31 @@
+﻿station_pandas,station_mta_detailed,GTFS Latitude,GTFS Longitude,rank,rec_category
+34 ST-PENN STA,34 St - Penn Station,40.752287,-73.993391,1,Volume
+GRD CNTRL-42 ST,Grand Central - 42 St,40.751776,-73.976848,2,Volume
+34 ST-HERALD SQ,34 St - Herald Sq,40.749567,-73.98795,3,Volume
+23 ST,23 St,40.742878,-73.992821,4,Interest
+TIMES SQ-42 ST,Times Sq - 42 St,40.755477,-73.987691,5,Volume
+14 ST-UNION SQ,14 St - Union Sq,40.734673,-73.989951,6,Interest
+FULTON ST,Fulton St,40.710197,-74.007691,7,Not Targeted
+86 ST,86 St,40.785868,-73.968916,8,Engagement
+42 ST-PORT AUTH,42 St - Port Authority Bus Terminal,40.757308,-73.989735,9,Not Targeted
+59 ST COLUMBUS,59 St - Columbus Circle,40.768296,-73.981736,10,Engagement
+125 ST,125 St,40.804138,-73.937594,11,Not Targeted
+CANAL ST,Canal St,40.718383,-74.00046,12,Not Targeted
+47-50 STS ROCK,47-50 Sts - Rockefeller Ctr,40.758663,-73.981329,13,Not Targeted
+59 ST,59 St,40.762526,-73.967967,14,Engagement
+96 ST,96 St,40.785672,-73.95107,15,Not Targeted
+FLUSHING-MAIN,Flushing - Main St,40.7596,-73.83003,16,Not Targeted
+CHAMBERS ST,Chambers St,40.714111,-74.008585,17,Not Targeted
+ATL AV-BARCLAY,Atlantic Av - Barclays Ctr,40.68446,-73.97689,18,Not Targeted
+JKSN HT-ROOSVLT,Jackson Hts - Roosevelt Av,40.746644,-73.891338,19,Not Targeted
+14 ST,14 St,40.738228,-73.996209,20,Interest
+28 ST,28 St,40.747215,-73.993365,21,Not Targeted
+50 ST,50 St,40.761728,-73.983849,22,Not Targeted
+LEXINGTON AV/53,Lexington Av/53 St,40.757552,-73.969055,23,Not Targeted
+42 ST-BRYANT PK,42 St - Bryant Pk,40.754222,-73.984569,24,Not Targeted
+WALL ST,Wall St,40.707557,-74.011862,25,Not Targeted
+W 4 ST-WASH SQ,W 4 St,40.732338,-74.000495,26,Not Targeted
+JAY ST-METROTEC,Jay St - MetroTech,40.692338,-73.987342,27,Interest
+145 ST,145 St,40.824783,-73.944216,28,Not Targeted
+72 ST,72 St,40.778453,-73.98197,29,Engagement
+PATH NEW WTC,World Trade Center,40.712582,-74.009781,30,Not Targeted
