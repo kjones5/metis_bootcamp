@@ -1,6 +1,6 @@
 # WomenTechWomenYes (WTWY)
 ## Project: Super Street Teams
-## Kelly Jones, Jonathan Sterling, and Prakash Verma - April 2018
+#### Kelly Jones, Jonathan Sterling, and Prakash Verma - April 2018
 ## WTWY Objectives
 Maximize WTWY street team efficacy by using publicly available data to optimize team placement at NYC subway entries and exits.
 
