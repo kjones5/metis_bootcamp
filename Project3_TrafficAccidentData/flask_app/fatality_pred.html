@@ -1,0 +1,324 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>Passenger Survival</title>
+    <link rel="stylesheet" href="static/d3.slider.css" />
+    <style>
+
+     body {
+       font-family: Verdana,Arial,sans-serif;
+     }
+
+     h2 {
+       font-size: 1.2em;
+       margin: 60px 0 5px 0;
+       color: gray
+     }
+
+     .space {
+       margin-bottom: 20 px;
+     }
+
+     .wrapper {
+       width: 800px;
+       margin-left: auto;
+       margin-right: auto;
+       margin-bottom: 0px;
+     }
+
+     #bar_chart {
+       margin-bottom: 0 px;
+     }
+
+     .bar {
+       fill: #57889B;
+     }
+
+     span {
+       color: steelblue;
+     }
+
+    </style>
+  </head>
+
+  <body>
+
+
+    <div id="chart_area" class="wrapper">
+      <h2>Probability of Death in a Car Accident That Has 1+ Fatalities</h2>
+      <p class="space"></p>
+      <div id="bar_chart">
+      </div>
+    </div>
+
+    <div id="sliders" class="wrapper">
+
+      <h2 class="feature">Model Year of Vehicle: <span id="mod_year">2011</span></h2>
+      <div id="mod_year_slider"></div>
+
+      <h2 class="feature">Age: <span id="age">42</span></h2>
+      <div id="age_slider"></div>
+
+      <h2 class="feature">Hour of Day (Military Time): <span id="hour">18</span></h2>
+      <div id="hour_slider"></div>
+
+      <h2 class="feature">How Many Drunk Drivers: <span id="drunk_dr">0</span></h2>
+      <div id="drunk_dr_slider"></div>
+
+      <h2 class="feature">Number of Occupants in Vehicle: <span id="numoccs">1</span></h2>
+      <div id="numoccs_slider"></div>
+
+      <h2 class="feature">Damage to Vehicle After Crash (6 is worst): <span id="deformed">2</span></h2>
+      <div id="deformed_slider"></div>
+
+      <h2 class="feature">Riding Motorcycle: <span id="motorcycle">0</span></h2>
+      <div id="motorcycle_slider"></div>
+
+      <h2 class="feature">Did Vehicle Roll Over: <span id="rollover_binary">0</span></h2>
+      <div id="rollover_binary_slider"></div>
+
+      <h2 class="feature">Did Air Bag Deploy: <span id="air_bag_deployed">1</span></h2>
+      <div id="air_bag_deployed_slider"></div>
+
+      <h2 class="feature">Was Accident Speed-Related: <span id="speedrel_binary">1</span></h2>
+      <div id="speedrel_binary_slider"></div>
+
+    </div>
+
+    <!-- Import the libraries: jQuery, d3, d3.slider -->
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <script src="http://d3js.org/d3.v3.min.js"></script>
+    <script src="static/d3.slider.js"></script>
+
+    <script>
+
+     <!-- SINGLE BAR CHART -->
+
+     var current_mod_year = 2011;
+     var current_age = 42;
+     var current_hour = 18;
+     var current_drunk_dr = 0;
+     var current_numoccs = 1;
+     var current_deformed = 2;
+     var current_motorcycle = 0;
+     var current_rollover_binary = 0;
+     var current_air_bag_deployed = 1;
+     var current_speedrel_binary = 1;
+     var current_risk = 12.0;
+
+     var chart = d3.select("#bar_chart")
+                   .append("svg:svg")
+                   .attr("width", 800)
+                   .attr("height", 100);
+
+     var chance_scale = d3.scale.linear()
+                                .domain([0, 100])
+                                .range([0, 800]);
+
+     var bar = chart.append("g")
+                    .attr("class", "bar")
+
+       bar.append("svg:rect")
+          .attr("id", "chancebar")
+          .attr("class", "bar")
+          .attr("width", chance_scale(current_risk))
+          .attr("height", 50);
+
+     bar.append("text")
+        .attr("id", "percent_text")
+        .attr("dy", ".75em")
+        .attr("y", 15)
+        .attr("x", chance_scale(current_risk-5))
+        .attr("text-anchor", "middle")
+        .attr("fill", "white")
+        .attr("font-size", 20)
+        .text( current_risk.toFixed(1) + "%");
+
+
+     <!-- FUNCTION TO GET CHANCE FROM YOUR PREDICTOR WITH AJAX AND CHANGE BAR  HEIGHT -->
+     function getAndDrawChance(mod_year, age, hour, drunk_dr, numoccs, deformed, motorcycle, rollover_binary, air_bag_deployed, speedrel_binary){
+
+       $.ajax({
+         type: "POST",
+         contentType: "application/json; charset=utf-8",
+         url: "/score",
+         dataType: "json",
+         async: true,
+         data: "{\"example\": ["+mod_year+","+age+","+hour+","+drunk_dr+","+numoccs+","+deformed+","+motorcycle+","+rollover_binary+","+air_bag_deployed+","+speedrel_binary+"]}",
+         success: function (data) {
+           var chance = 100 * data["score"];
+           d3.select("#chancebar")
+             .attr("width", chance_scale(chance));
+           d3.select("#percent_text")
+             .attr("x", chance_scale(chance-5))
+             .text(chance.toFixed(1) + "%");
+         },
+         error: function (result) {
+         }
+       })
+     }
+
+
+     <!-- SLIDERS -->
+
+     d3.select('#mod_year_slider')
+       .call(
+         d3.slider()
+           .value(current_mod_year)
+           .min(1949)
+           .max(2016)
+           .step(1)
+           .axis(true)
+           .on("slide", function(evt,value) {
+             d3.select('#mod_year').text(value);
+             current_mod_year = value;
+             getAndDrawChance(current_mod_year, current_age, current_hour, current_drunk_dr, current_numoccs, current_deformed, current_motorcycle, current_rollover_binary, current_air_bag_deployed, current_speedrel_binary)
+           }
+           )
+       );
+
+     d3.select('#age_slider')
+       .call(
+         d3.slider()
+           .value(current_age)
+           .step(1)
+           .axis(true)
+           .on("slide", function(evt,value) {
+             d3.select('#age').text(value);
+             current_age = value;
+             getAndDrawChance(current_mod_year, current_age, current_hour, current_drunk_dr, current_numoccs, current_deformed, current_motorcycle, current_rollover_binary, current_air_bag_deployed, current_speedrel_binary)
+           }
+           )
+       );
+
+     d3.select('#hour_slider')
+       .call(
+         d3.slider()
+           .value(current_hour)
+           .min(0)
+           .max(23)
+           .step(1)
+           .axis(true)
+           .on("slide", function(evt,value) {
+             d3.select('#hour').text(value);
+             current_hour = value;
+             getAndDrawChance(current_mod_year, current_age, current_hour, current_drunk_dr, current_numoccs, current_deformed, current_motorcycle, current_rollover_binary, current_air_bag_deployed, current_speedrel_binary)
+           }
+           )
+       );
+
+     d3.select('#drunk_dr_slider')
+       .call(
+         d3.slider()
+           .value(current_drunk_dr)
+           .min(0)
+           .max(3)
+           .step(1)
+           .axis(true)
+           .on("slide", function(evt,value) {
+             d3.select('#hour').text(value);
+             current_drunk_dr = value;
+             getAndDrawChance(current_mod_year, current_age, current_hour, current_drunk_dr, current_numoccs, current_deformed, current_motorcycle, current_rollover_binary, current_air_bag_deployed, current_speedrel_binary)
+           }
+           )
+       );
+
+     d3.select('#numoccs_slider')
+       .call(
+         d3.slider()
+           .value(current_numoccs)
+           .min(1)
+           .max(50)
+           .step(1)
+           .axis(true)
+           .on("slide", function(evt,value) {
+             d3.select('#numoccs').text(value);
+             current_numoccs = value;
+             getAndDrawChance(current_mod_year, current_age, current_hour, current_drunk_dr, current_numoccs, current_deformed, current_motorcycle, current_rollover_binary, current_air_bag_deployed, current_speedrel_binary)
+           }
+           )
+       );
+
+     d3.select('#deformed_slider')
+       .call(
+         d3.slider()
+           .value(current_deformed)
+           .min(0)
+           .max(6)
+           .step(2)
+           .axis(true)
+           .on("slide", function(evt,value) {
+             d3.select('#deformed').text(value);
+             current_deformed = value;
+             getAndDrawChance(current_mod_year, current_age, current_hour, current_drunk_dr, current_numoccs, current_deformed, current_motorcycle, current_rollover_binary, current_air_bag_deployed, current_speedrel_binary)
+           }
+           )
+       );
+
+     d3.select('#motorcycle_slider')
+       .call(
+         d3.slider()
+           .value(current_motorcycle)
+           .min(0)
+           .max(1)
+           .step(1.0)
+           .axis(true)
+           .on("slide", function(evt,value) {
+             d3.select('#motorcycle').text(value);
+             current_motorcycle = value;
+             getAndDrawChance(current_mod_year, current_age, current_hour, current_drunk_dr, current_numoccs, current_deformed, current_motorcycle, current_rollover_binary, current_air_bag_deployed, current_speedrel_binary)
+           }
+           )
+       );
+
+     d3.select('#rollover_binary_slider')
+       .call(
+         d3.slider()
+           .value(current_rollover_binary)
+           .min(0)
+           .max(1)
+           .step(1)
+           .axis(true)
+           .on("slide", function(evt,value) {
+             d3.select('#rollover_binary').text(value);
+             current_rollover_binary = value;
+             getAndDrawChance(current_mod_year, current_age, current_hour, current_drunk_dr, current_numoccs, current_deformed, current_motorcycle, current_rollover_binary, current_air_bag_deployed, current_speedrel_binary)
+           }
+           )
+       );
+
+     d3.select('#air_bag_deployed_slider')
+       .call(
+         d3.slider()
+           .value(current_air_bag_deployed)
+           .min(0)
+           .max(1)
+           .step(1)
+           .axis(true)
+           .on("slide", function(evt,value) {
+             d3.select('#air_bag_deployed').text(value);
+             current_air_bag_deployed = value;
+             getAndDrawChance(current_mod_year, current_age, current_hour, current_drunk_dr, current_numoccs, current_deformed, current_motorcycle, current_rollover_binary, current_air_bag_deployed, current_speedrel_binary)
+           }
+           )
+       );
+
+     d3.select('#speedrel_binary_slider')
+       .call(
+         d3.slider()
+           .value(current_speedrel_binary)
+           .max(1)
+           .step(1)
+           .axis(true)
+           .on("slide", function(evt,value) {
+             d3.select('#speedrel_binary').text(value);
+             current_speedrel_binary = value;
+             getAndDrawChance(current_mod_year, current_age, current_hour, current_drunk_dr, current_numoccs, current_deformed, current_motorcycle, current_rollover_binary, current_air_bag_deployed, current_speedrel_binary)
+           }
+           )
+       );
+
+    </script>
+  </body>
+</html>
