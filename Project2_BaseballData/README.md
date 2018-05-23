@@ -22,7 +22,7 @@ Scraped from baseball-reference.com and USA Today. Covered all American League t
 
 **Illustration: What's more useful?**
 *Tight correlation between **runs** and wins (left). Looser correlation between **payroll** and wins (right). Opted to use features like payroll in model because they are more within an organization's control.*
-![sidebyside](/Users/kellyjones/metis/metis_bootcamp/Project2_BaseballData/figures/sidebyside.png)
+![sidebyside](figures/sidebyside.png)
 
 ## Findings
 
