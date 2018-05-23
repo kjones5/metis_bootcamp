@@ -1,3 +1,5 @@
+*This was an early project and is not reflective of the breadth of my current skillset.*
+
 # Explaining the Mariners' 16-Year Playoff Drought
 
 #### Project: Linear Regression and Web Scraping
