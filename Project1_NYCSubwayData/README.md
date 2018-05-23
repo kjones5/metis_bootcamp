@@ -1,3 +1,5 @@
+*Note from Kelly: This was an early project and is not reflective of the depth or breadth of my current skillset.*
+
 # WomenTechWomenYes (WTWY)
 ## Project: Super Street Teams
 #### Kelly Jones, Jonathan Sterling, and Prakash Verma - April 2018
