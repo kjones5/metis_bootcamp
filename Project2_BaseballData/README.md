@@ -1,4 +1,4 @@
-*This was an early project and is not reflective of the breadth of my current skillset.*
+*Note from Kelly: This was an early project and is not reflective of the depth or breadth of my current skillset.*
 
 # Explaining the Mariners' 16-Year Playoff Drought
 
@@ -20,7 +20,7 @@ Scraped from baseball-reference.com and USA Today. Covered all American League t
 
 **Target: percent of games won** by the team that year, a continuous measure. Tested polynomials (degrees 2 and 3) but model performed better at degree 1. Trained model on 70% of dataset and tested it on the remaining 30%. For regularization, did elastic net cross-validation weighted toward Ridge regularization. Many features reduced to zero and mostly batting statistics were left.
 
-**Note on features:** It's easy to make a clear but useless model. For example, using only two features--average runs scored and average runs given up--can yield an R-squared value of 0.86, meaning the model explains 86% of the variation in the percent of games won. This is a useless model because its implicit suggestion for winning games is just to play well! More useful models, like the final model for this project, dropped obvious variables and used only those specific, actionable features (ex: singles or doubles rather than hits or runs) where a team might be able to make a change.
+**Feature Considerations:** It's easy to make a clear but useless model. For example, using only two features--average runs scored and average runs given up--can yield an R-squared value of 0.86, meaning the model explains 86% of the variation in the percent of games won. This is a useless model because its implicit suggestion for winning games is just to play well! More useful models, like the final model for this project, dropped obvious variables and used only those specific, actionable features (ex: singles or doubles rather than hits or runs) where a team might be able to make a change.
 
 **Illustration: What's more useful?**  
 *Tight correlation between **runs** and wins (left). Looser correlation between **payroll** and wins (right). Opted to use features like payroll in model because they are more within an organization's control.*
