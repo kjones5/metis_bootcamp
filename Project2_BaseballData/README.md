@@ -20,7 +20,7 @@ Scraped from baseball-reference.com and USA Today. Covered all American League t
 
 **Note on features:** With baseball stats, it is easy to make a clear but useless model. For example, using only two features--average runs scored and average runs given up--can yield an R-squared value of 0.86, meaning the model explains 86% of the variation in the percent of games won. This is a useless model because its implicit suggestion for winning games is just to play well! More useful models, like the final model for this project, dropped obvious variables and used only those specific, actionable features (ex: singles or doubles rather than hits or runs) where a team might be able to make a change.
 
-**Illustration: What's more useful?**
+**Illustration: What's more useful?**  
 *Tight correlation between **runs** and wins (left). Looser correlation between **payroll** and wins (right). Opted to use features like payroll in model because they are more within an organization's control.*
 ![sidebyside](figures/sidebyside.png)
 
