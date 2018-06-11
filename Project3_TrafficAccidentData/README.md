@@ -41,7 +41,7 @@ The rate of "recall" which tries to minimize false negatives was 90%. This is go
 
 ## Visualizing Results
 
-**Tableau Dashboard**
+**Tableau Dashboard**  
 Such a rich dataset with such social relevance deserves visualization. In the accompanying [Tableau dashboards](https://public.tableau.com/profile/kelly.jones4370#!/vizhome/TrafficFatalities2015_0/Fatalities), which are interactive and publicly available, viewers can use a map to explore the data they are most interested in and find differences by time of day, day of week, weather, drunk driving, and more. Perhaps the most startling finding was that so many fatal accidents involved at least one drunk driver.
 
 <img src="images/tableau_screenshot.png" alt="tableaudashboard" width="600px"/>
