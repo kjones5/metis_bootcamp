@@ -35,7 +35,7 @@ The standard Python implementation of Random Forest via `scikitlearn` is not set
 ## Model Performance
 
 After training on 70% of the data, the model had an 89% accuracy rate in predicting survival vs. fatality for the remaining 30% of test cases. It correctly classified 2,941 fatalities and 5,486 survivors. However, it expected 753 fatalities among people who actually survived (false positives) and, most troublingly, expected 373 people to survive who were actually fatalities (false negatives). Remember that fatality was the "positive" condition because we sought to predict it with our model, not because it is good. The confusion matrix below represents these proportions.
-![confusionmatrix](images/confusion_matrix_cr.png)
+![confusionmatrix](images/confusion_matrix_cr.png =400x)
 
 The rate of "recall" which tries to minimize false negatives was 90%. This is good, but not good enough. A false negative means that our model cannot explain why someone was a fatality, and thus we cannot act on information to change that outcome for future motorists. 
 
