@@ -21,16 +21,14 @@ After removing nulls, the datatset had 48,000 observations (people), more than 2
 ## Model: Random Forest (Decision Trees)
 
 **Models Considered:** 
-* Decision Trees
-* Random Forest
+* Decision Trees/Random Forest
 * K Nearest Neighbors
 * Logistic Regression
 * Linear SVC
 
-**Why Random Forest?** Decision trees are especially well-suited to this dataset, and Random Forest is a powerful decision tree model. The dataset is rich with categorical variables which are difficult to handle in most other classification models. All the data was initially numeric, which required decoding via a 600-page codebook. (Example: each state had its own number on a numeric scale.) Any of the above models would technically run on the dataset when it was numeric, but the output was meaningless. If Alabama is 1 and Wyoming is 50, the model will look for a sequential relationship among states even if none exists. As we know, Wyoming is not 50 times as "state" as Alabama. Decision trees are great at handling categorical data without requiring a feature with 50 options to be turned into 50 dummy variables.
+**Winner: CatBoost (Gradient-Boosted Decision Trees)** Decision trees are especially well-suited to this dataset, as it is rich with categorical variables which are difficult to handle in most other classification models. All the data was initially numeric, which required decoding via a 600-page codebook. (Example: each state had its own number on a numeric scale.) Any of the above models would technically run on the dataset when it was numeric, but the output was meaningless. If Alabama is 1 and Wyoming is 50, the model will look for a sequential relationship among states even if none exists. As we know, Wyoming is not 50 times as "state" as Alabama. Decision trees are great at handling categorical data without requiring a feature with 50 options to be turned into 50 dummy variables.
 
-**So Why CatBoost?**
-The standard Python implementation of Random Forest via `scikitlearn` is not set up for categorical variables, even though decision trees are inherently suited for that. The `CatBoost` package (short for "category boost") fills this gap by accepting string features as valid inputs for a decision tree.
+The standard Python implementations of decision trees and Random Forest via `scikitlearn` are not set up for categorical variables, even though decision trees are inherently suited for that. The `CatBoost` package (short for "category boost") fills this gap by accepting string features as valid inputs for a decision tree and adds power to the model with gradient boosting.
 
 ## Model Performance
 
