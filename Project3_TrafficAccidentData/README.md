@@ -21,11 +21,11 @@ After removing nulls, the datatset had 48,000 observations (people), more than 2
 ## Model: Random Forest (Decision Trees)
 
 **Models Considered:** 
-* Decision Trees: A forking path based on features, ending in a classification
-* Random Forest: An iterative decision tree model that is good at learning from its previous mistakes
-* K Nearest Neighbors: A decision boundary model based on considering nearby points
-* Logistic Regression: xxx [estimating probability and making a prediction based on a threshold]
-* Linear SVC: xxx
+* Decision Trees
+* Random Forest
+* K Nearest Neighbors
+* Logistic Regression
+* Linear SVC
 
 **Why Random Forest?** Decision trees are especially well-suited to this dataset, and Random Forest is a powerful decision tree model. The dataset is rich with categorical variables which are difficult to handle in most other classification models. All the data was initially numeric, which required decoding via a 600-page codebook. (Example: each state had its own number on a numeric scale.) Any of the above models would technically run on the dataset when it was numeric, but the output was meaningless. If Alabama is 1 and Wyoming is 50, the model will look for a sequential relationship among states even if none exists. As we know, Wyoming is not 50 times as "state" as Alabama. Decision trees are great at handling categorical data without requiring a feature with 50 options to be turned into 50 dummy variables.
 
@@ -42,12 +42,12 @@ The rate of "recall" which tries to minimize false negatives was 90%. This is go
 ## Visualizing Results
 
 **Tableau Dashboard**
-Such a rich dataset with such social relevance deserves visualization. In the accompanying Tableau dashboards [LINK], which are interactive and publicly available, viewers can use a map to explore the data they are most interested in and find differences by time of day, day of week, weather, drunk driving, and more. Perhaps the most startling finding was that so many fatal accidents (xx%) involved at least one drunk driver.
+Such a rich dataset with such social relevance deserves visualization. In the accompanying Tableau dashboards [LINK], which are interactive and publicly available, viewers can use a map to explore the data they are most interested in and find differences by time of day, day of week, weather, drunk driving, and more. Perhaps the most startling finding was that so many fatal accidents involved at least one drunk driver.
 
 ![tableauscreenshot](images/tableau_screenshot.png)
 
 **Flask App**
-* In addition, a locally-hosted Flask app enables real-time predictions of fatality based on different numeric inputs. This app ran on a different model, logistic regression, and incorporated only numeric data. It was not as robust as the decision tree model but did predict fatalities with over 75% accuracy. Viewers can watch a demo video for the flask app in this repository.
+* In addition, a locally-hosted Flask app enables real-time predictions of fatality based on different numeric inputs. This app ran on a different model, logistic regression, and incorporated only numeric data. It was not as robust as the decision tree model but did predict fatalities with over 75% accuracy. Viewers can access a demo video for the flask app in this repository.
 
 ## Future Direction
 
