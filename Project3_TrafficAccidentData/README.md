@@ -35,7 +35,8 @@ The standard Python implementation of Random Forest via `scikitlearn` is not set
 ## Model Performance
 
 After training on 70% of the data, the model had an 89% accuracy rate in predicting survival vs. fatality for the remaining 30% of test cases. It correctly classified 2,941 fatalities and 5,486 survivors. However, it expected 753 fatalities among people who actually survived (false positives) and, most troublingly, expected 373 people to survive who were actually fatalities (false negatives). Remember that fatality was the "positive" condition because we sought to predict it with our model, not because it is good. The confusion matrix below represents these proportions.
-![confusionmatrix](images/confusion_matrix_cr.png =400x)
+
+<img src="images/confusion_matrix_cr.png" alt="confusionmatrix" width="400px"/>
 
 The rate of "recall" which tries to minimize false negatives was 90%. This is good, but not good enough. A false negative means that our model cannot explain why someone was a fatality, and thus we cannot act on information to change that outcome for future motorists. 
 
@@ -44,7 +45,7 @@ The rate of "recall" which tries to minimize false negatives was 90%. This is go
 **Tableau Dashboard**
 Such a rich dataset with such social relevance deserves visualization. In the accompanying Tableau dashboards [LINK], which are interactive and publicly available, viewers can use a map to explore the data they are most interested in and find differences by time of day, day of week, weather, drunk driving, and more. Perhaps the most startling finding was that so many fatal accidents involved at least one drunk driver.
 
-![tableauscreenshot](images/tableau_screenshot.png)
+<img src="images/tableau_screenshot.png" alt="tableaudashboard" width="600px"/>
 
 **Flask App**
 * In addition, a locally-hosted Flask app enables real-time predictions of fatality based on different numeric inputs. This app ran on a different model, logistic regression, and incorporated only numeric data. It was not as robust as the decision tree model but did predict fatalities with over 75% accuracy. Viewers can access a demo video for the flask app in this repository.
